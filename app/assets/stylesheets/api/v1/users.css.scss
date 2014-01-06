@@ -1,0 +1,29 @@
+// Place all the styles related to the API::V1::Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap";
+
+#wrap > .container {
+  padding: 60px 15px 0;
+  	background-color:#EEE8AA;
+}
+
+.box-code{
+	border-style:dashed;
+	border-width:1px;
+	background-color:#DCDCDC;
+	font-family:"Courier New";
+	font-size:15px;
+	font-weight:bold;
+	color:#191970;
+}
+
+.panelbgcolor{
+	background-color:#FFFFFF;	
+}
+
+th{
+	background-color:#111111;		
+	color:#FFFFFF;
+}

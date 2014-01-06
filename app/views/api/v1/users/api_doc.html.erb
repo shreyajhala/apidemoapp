@@ -1,0 +1,154 @@
+<div class="container"><br>
+
+	<div class="panel panel-info">
+  		<div class="panel-heading">List of API Services</div>
+  		<div class="panel-body panelbgcolor"><strong>Registering a User</strong><hr>
+  		<div class="panel-body">
+  		User object has following fields:
+  		<table class="table" border="1">
+    		<tr><th>Fields</th><th>DataType</th><th>Description</th></tr>
+    		<tr><td>id</td><td>Integer</td><td>user's unique id Auto generated</td></tr>
+    		<tr><td>name</td><td>String</td><td>user's name</td></tr>
+    		<tr><td>email</td><td>String</td><td>user's email</td></tr>
+    		<tr><td>password</td><td>String</td><td>user's password</td></tr>
+    	</table>
+
+  		
+  		<p>To Register a new user following parameters are required:</p>
+  		<ul>
+  			<li>user[name]</li>
+  			<li>user[email]</li>
+  			<li>user[password]</li>
+  			<li>user[password_confirmation]</li>
+  		</ul>
+  		
+  		
+  		
+  		<div class="panel-heading">URL</div>
+  		<div class="panel-body">
+    	
+    		<table class="table">
+    			<tr><th>Method</th><th>URL</th><th>Parameters</th></tr>
+    			<tr><td>POST</td><td>http://192.168.1.36:3000/api/v1/registration</td><td>user's name,email,password,password_confirmation</td></tr>
+  			</table>
+  		
+  		</div>
+  		
+  		Example : 
+  		<p> To Server </p>
+  		<div class="box-code"><br><p align="center" >{"user"=>{"name"=>"shreya", "email"=>"shrey.freedom@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}}</p><br></div>
+  		
+  		<p> From Server </p>
+  		<div class="box-code"><br><p align="center" >{"auth_token=":"7c9f933bae01d44a3ecaed68dce82647","id":18,"name":"shreya"}</p><br></div>
+
+  		<p> Errors From Server </p>
+  		<div class="box-code"><br><p align="center" >{"errors":["Email has already been taken","Password confirmation doesn't match Password"],"status":404}</p><br></div>
+  		
+
+  		<div class="panel-body"><strong>User sign in</strong><hr></div>
+
+  		<div class="panel-heading">URL</div>
+  		<div class="panel-body">
+    	
+    		<table class="table">
+    			<tr><th>Method</th><th>URL</th><th>Parameters</th></tr>
+    			<tr><td>POST</td><td>http://192.168.1.36:3000/api/v1/sessions</td><td>user's email,password</td></tr>
+  			</table>
+  		
+  		</div>
+  		
+  		Example : 
+  		<p> To Server </p>
+  		<div class="box-code"><br><p align="center" >{"user"=>{"email"=>"shrey.freedom@gmail.com", "password"=>"[FILTERED]"}}</p><br></div>
+  		
+  		<p> From Server </p>
+  		<div class="box-code"><br><p align="center" >{"auth_token=":"ff7dfdc11b9ceaecc0cec040f22e320f","id":19,"name":"shreya"}</p><br></div>
+
+  		<p> Errors From Server </p>
+  		<div class="box-code"><br><p align="center" >{"errors":"Invalid email/password!","status":404}</p><br></div>
+  		<div class="panel-body"><strong>User listing</strong><hr></div>
+
+  		<div class="panel-heading">URL</div>
+  		<div class="panel-body">
+    	
+    		<table class="table">
+    			<tr><th>Method</th><th>URL</th><th>Parameters</th></tr>
+    			<tr><td>GET</td><td>http://192.168.1.36:3000/api/v1/users?auth_token=a979299e32732bb905ee6194b95c6b60</td><td>user's auth_token</td></tr>
+  			</table>
+  		
+  		</div>
+  		
+  		Example : 
+  		<p> To Server </p>
+  		<div class="box-code"><br><p align="center" >?auth_token=a979299e32732bb905ee6194b95c6b60 embedded in URL</p><br></div>
+  		
+  		<p> From Server </p>
+  		<div class="box-code"><br><p align="center" >
+  			
+  		{"users":[<br>
+  		{"id":2,"name":"Shreya1","email":"shreya@complitech.net"},<br>
+  		{"id":12,"name":"test","email":"testing@complitech.net"},<br>
+  		{"id":13,"name":"test","email":"testing1@complitech.net"},<br>
+  		{"id":14,"name":"test","email":"testing123@complitech.net"},<br>
+  		{"id":17,"name":"shreya","email":"shreya.freedom@gmail.com"},<br>
+  		{"id":18,"name":"shreya","email":"shrey.freedom@gmail.com"}<br>.....
+
+
+  		</p><br></div>
+
+  		<p> Errors From Server </p>
+  		<div class="box-code"><br><p align="center" >{"errors":"auth_token missing or Invalid!","status":404} <br>
+
+  		</p><br></div>
+
+  		<div class="panel-body"><strong>User sign out</strong><hr></div>
+
+
+  		<div class="panel-heading">URL</div>
+  		<div class="panel-body">
+    	
+    		<table class="table">
+    			<tr><th>Method</th><th>URL</th><th>Parameters</th></tr>
+    			<tr><td>DELETE</td><td>http://192.168.1.36:3000/api/v1/sessions/:id</td><td>user's id</td></tr>
+  			</table>
+  		
+  		</div>
+  		
+  		Example : 
+  		<p> To Server </p>
+  		<div class="box-code"><br><p align="center" >user's id appended after the URL :<br>http://192.168.1.36:3000/api/v1/sessions/19 </p><br></div>
+  		
+  		<p> From Server </p>
+  		<div class="box-code"><br><p align="center" >{"message":"Sucessful Logout!","status":200}</p><br></div>
+
+  		<p> Errors From Server </p>
+  		<div class="box-code"><br><p align="center" >{"errors":"No records Found","status":404}</p><br></div>
+
+
+  		<div class="panel-body"><strong>Forgot Password</strong><hr></div>
+
+
+  		<div class="panel-heading">URL</div>
+  		<div class="panel-body">
+    	
+    		<table class="table">
+    			<tr><th>Method</th><th>URL</th><th>Parameters</th></tr>
+    			<tr><td>POST</td><td>http://192.168.1.36:3000/forgotpassword</td><td>user's email id</td></tr>
+  			</table>
+  		
+  		</div>
+  		
+  		Example : 
+  		<p> To Server </p>
+  		<div class="box-code"><br><p align="center" >{"user"=>{"email"=>"shreya@gmail.com"}} </p><br></div>
+  		
+  		<p> From Server </p>
+  		<div class="box-code"><br><p align="center">{"message":"Email sent!","status":200}</p><br></div>
+
+  		<p> Errors From Server </p>
+  		<div class="box-code"><br><p align="center">{"errors":"Email not found try again!","status":404}</p><br></div>
+
+
+	</div>
+
+</div>
